@@ -1,4 +1,4 @@
-public class hu {
+public class hw {
   public static void main(String[] args) {
     {
       int stars = 7;
