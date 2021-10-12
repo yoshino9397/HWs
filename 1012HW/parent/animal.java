@@ -6,9 +6,6 @@ public class animal {
 	protected String animalType;
 	private String bloodType;
 
-	public animal(int height2, int weight2, String animalType2, String bloodType2) {
-	}
-
 	public int getHeight() {
 		return height;
 	}
