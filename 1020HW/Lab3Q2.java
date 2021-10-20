@@ -6,10 +6,10 @@ public class Lab3Q2 {
       System.out.println(str);
     }
 
-    
-
-
+    strArray[9] = "-5";
+    for (String str : strArray) {
+      System.out.println(str);
+    }
 
   }
 }
-
