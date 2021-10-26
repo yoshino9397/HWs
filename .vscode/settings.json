@@ -1,3 +1,9 @@
 {
-  "java.project.sourcePaths": ["1004hw", "1008HW", "1012HW", "1020HW"]
+  "java.project.sourcePaths": [
+    "1004hw",
+    "1008HW",
+    "1012HW",
+    "1020HW",
+    "1029Presen"
+  ]
 }
