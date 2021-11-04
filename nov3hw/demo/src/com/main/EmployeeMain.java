@@ -1,11 +1,11 @@
-package com.main;
+package nov3hw.demo.src.com.main;
 
 import java.util.List;
 
-import com.dto.Employee;
-import com.exception.EmployeeNotFoundException;
-import com.service.EmployeeService;
-import com.service.EmployeeServiceImpl;
+import nov3hw.demo.src.com.dto.Employee;
+import nov3hw.demo.src.com.exception.EmployeeNotFoundException;
+import nov3hw.demo.src.com.service.EmployeeService;
+import nov3hw.demo.src.com.service.EmployeeServiceImpl;
 
 public class EmployeeMain {
 
@@ -17,6 +17,7 @@ public class EmployeeMain {
 		eService.addEmployee(new Employee(1111, "Michael", "Sales", 28));
 		eService.addEmployee(new Employee(2222, "Samuel", "Technology", 25));
 		eService.addEmployee(new Employee(3333, "John", "Operations", 30));
+		eService.addEmployee(new Employee(666, "Yoshino", "Student", 5));
 		
 		//show all employees
 		List<Employee> employeeList = eService.showAllEmployees();

@@ -1,4 +1,4 @@
-package com.dao;
+package nov3hw.demo.src.com.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,21 +8,20 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.dto.Employee;
-import com.exception.EmployeeNotFoundException;
+import nov3hw.demo.src.com.dto.Employee;
+import nov3hw.demo.src.com.exception.EmployeeNotFoundException;
 
 public class EmployeeDAOMySQLImpl implements EmployeeDAO {
-	
+
 	private Connection conn = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
-	//performing database operations
+	// performing database operations
 	private static final String INSERT_COMMAND = "INSERT INTO employees_tbl VALUES (?,?,?,?)"; // placeholder ---> ?
 	private static final String DELETE_COMMAND = "DELETE FROM employees_tbl WHERE id=?";
 	private static final String FIND_COMMAND = "SELECT * FROM employees_tbl WHERE id=?";
 	private static final String SELECT_ALL = "SELECT * FROM employees_tbl";
-	
-	
+
 	public EmployeeDAOMySQLImpl() {
 		try {
 			conn = DriverManager.getConnection(EmployeeDAO.URL, EmployeeDAO.USERNAME, EmployeeDAO.PASSWORD);
@@ -35,39 +34,38 @@ public class EmployeeDAOMySQLImpl implements EmployeeDAO {
 	@Override
 	public void addEmployee(Employee e) {
 		int i = 0;
-		
+
 		try {
 			statement = conn.prepareStatement(INSERT_COMMAND);
 			statement.setInt(1, e.getId());
 			statement.setString(2, e.getName());
 			statement.setString(3, e.getDepartment());
 			statement.setInt(4, e.getDaysAttended());
-			
+
 			i = statement.executeUpdate();
-			
-			
+
 		} catch (SQLException e1) {
 			System.out.println("Adding record failed... Unable to execute INSERT");
 			e1.printStackTrace();
 		} finally {
-			
+
 			try {
 				statement.close();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		}
-		
-		if(i > 1) {
+
+		if (i > 1) {
 			System.out.println("Record Added...");
 		}
-		
+
 	}
 
 	@Override
 	public void deleteEmployee(int id) {
 		int i = 0;
-		
+
 		try {
 			statement = conn.prepareStatement(DELETE_COMMAND);
 			statement.setInt(1, id);
@@ -82,38 +80,37 @@ public class EmployeeDAOMySQLImpl implements EmployeeDAO {
 				e.printStackTrace();
 			}
 		}
-		
-		if(i > 1) {
+
+		if (i > 1) {
 			System.out.println("Record Deleted...");
 		}
 	}
 
 	@Override
 	public void updateEmployee(Employee e) {
-		
-		
+
 	}
 
 	@Override
 	public Employee findEmployee(Employee e) throws EmployeeNotFoundException {
-		
+
 		Employee findTemp = null;
-		
+
 		try {
 			statement = conn.prepareStatement(FIND_COMMAND);
 			statement.setInt(1, e.getId());
 			resultSet = statement.executeQuery();
-			
-			if(!resultSet.next()) {
+
+			if (!resultSet.next()) {
 				throw new EmployeeNotFoundException(e.getId());
 			}
-			
+
 			findTemp = new Employee();
 			findTemp.setId(resultSet.getInt("id"));
 			findTemp.setName(resultSet.getString("name"));
 			findTemp.setDepartment(resultSet.getString("department"));
 			findTemp.setDaysAttended(resultSet.getInt("daysAttended"));
-			
+
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		} finally {
@@ -124,27 +121,27 @@ public class EmployeeDAOMySQLImpl implements EmployeeDAO {
 				e1.printStackTrace();
 			}
 		}
-		
+
 		return findTemp;
 	}
 
 	@Override
 	public List<Employee> showAllEmployees() {
-		
+
 		Employee selectAllTemp = null;
 		List<Employee> empList = new LinkedList<>();
-		
+
 		try {
 			statement = conn.prepareStatement(SELECT_ALL);
 			resultSet = statement.executeQuery();
-			
-			while(resultSet.next()) {
+
+			while (resultSet.next()) {
 				selectAllTemp = new Employee();
 				selectAllTemp.setId(resultSet.getInt("id"));
 				selectAllTemp.setName(resultSet.getString("name"));
 				selectAllTemp.setDepartment(resultSet.getString("department"));
 				selectAllTemp.setDaysAttended(resultSet.getInt("daysAttended"));
-				
+
 				empList.add(selectAllTemp);
 			}
 		} catch (Exception e) {
@@ -157,7 +154,7 @@ public class EmployeeDAOMySQLImpl implements EmployeeDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return empList;
 	}
 

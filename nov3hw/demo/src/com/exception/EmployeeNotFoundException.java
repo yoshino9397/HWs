@@ -1,4 +1,4 @@
-package com.exception;
+package nov3hw.demo.src.com.exception;
 
 public class EmployeeNotFoundException extends Exception {
 	
