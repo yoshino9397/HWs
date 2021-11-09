@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.spring.pma.entity.Employee;
 
-public class iEmployeeRepository extends CrudRepository <Employee, Long> {
+public interface iEmployeeRepository extends CrudRepository <Employee, Long> {
 
   @Override
   public List<Employee> findAll();
