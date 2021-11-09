@@ -15,7 +15,7 @@ import com.spring.pma.entity.Employee;
 public class EmployeeController {
 
   @Autowired
-  iEmployeeRepository proRepo;
+  iEmployeeRepository empRepo;
 
   // @RequestMapping("/new")
   @GetMapping("/new")
@@ -28,7 +28,7 @@ public class EmployeeController {
   @PostMapping("/save")
   public String createEmployee(Employee employee, Model model) {
     // this is where we save to database
-    proRepo.save(employee);
+    empRepo.save(employee);
     return "redirect:/employees/new";
   }
 }
