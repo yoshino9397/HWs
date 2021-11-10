@@ -10,30 +10,31 @@
           <legend>New Employee</legend>
           <hr class="mb-4" />
           <div class="mb-3">
-            <label class="form-label">Employee Name</label>
+            <label class="form-label">Employee First Name</label>
             <input
               class="form-control"
               type="text"
-              placeholder="Employee Name"
-              th:field="${employee.name}"
+              placeholder="Employee First Name"
+              th:field="${employee.firstname}"
             />
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Stage</label>
-            <select class="form-control" th:field="${employee.stage}">
-              <option th:value="NOTSTARTED">Not Started</option>
-              <option th:value="INPROGRESS">In Progress</option>
-              <option th:value="COMPLETED">Completed</option>
-            </select>
+            <label class="form-label">Employee Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Employee Last Name"
+              th:field="${employee.lastname}"
+            />
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Description</label>
+            <label class="form-label">Email</label>
             <textarea
               class="form-control"
               placeholder="Enter Employee Description"
-              th:field="${employee.description}"
+              th:field="${employee.email}"
             ></textarea>
           </div>
 
