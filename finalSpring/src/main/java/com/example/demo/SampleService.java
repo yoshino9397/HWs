@@ -19,7 +19,7 @@ public class SampleService {
     Connection connection = null;
 
     try {
-      connection = DriverManager.getConnection("jdbc:mysql://localhost:8080/sample?serverTimezone=JST", "root", "root");  //localhost:3306を変更
+      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample?serverTimezone=JST", "root", "root"); // localhost:3306を変更
       Statement statement = connection.createStatement();
       resultSet = statement.executeQuery("select * from product");
       while (resultSet.next()) {
@@ -44,7 +44,7 @@ public class SampleService {
     Connection connection = null;
 
     try {
-      connection = DriverManager.getConnection("jdbc:mysql://localhost:8080/sample?serverTimezone=JST", "root", "root");
+      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample?serverTimezone=JST", "root", "root");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO product VALUES (?, ?, ?, ?, ?)");
 
       statement.setString(1, productForm.getCode());
@@ -68,7 +68,7 @@ public class SampleService {
     Connection connection = null;
 
     try {
-      connection = DriverManager.getConnection("jdbc:mysql://localhost:8080/sample?serverTimezone=JST", "root", "root");
+      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample?serverTimezone=JST", "root", "root");
       PreparedStatement statement = connection
           .prepareStatement("UPDATE product SET code=?, name=?, description=?, price=?, evaluation=? WHERE code=?");
 
@@ -94,7 +94,7 @@ public class SampleService {
     Connection connection = null;
 
     try {
-      connection = DriverManager.getConnection("jdbc:mysql://localhost:8080/sample?serverTimezone=JST", "root", "root");
+      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample?serverTimezone=JST", "root", "root");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM product WHERE code=?");
 
       statement.setString(1, productForm.getCode());
