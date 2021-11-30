@@ -1,3 +1,4 @@
+
 class calculator {
   public static void main(String[] args) {
     double inputnum1 = 0;

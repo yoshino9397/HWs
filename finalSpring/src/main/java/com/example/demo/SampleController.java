@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.io.Console;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,17 +35,17 @@ public class SampleController {
   @RequestMapping(value = "/login_result", method = RequestMethod.POST)
   public String login_result(LoginForm loginForm, Model model) {
     List<Map<String, Object>> list;
-    list = jdbcTemplate.queryForList("select * from user");
+    list = jdbcTemplate.queryForList("select * from User");
 
-    for (int i = 0; i < list.size(); i++) {
-      if (("[" + loginForm.getId() + "," + " " + loginForm.getName() + "]")
-          .compareTo((list.get(i).values().toString())) == 0) {
-        model.addAttribute("message", "Login was successful");
-      }
+    for (int i = 1; i < (list.size() + 1); i++) {
+      // if (("[" + loginForm.getId() + "," + " " + loginForm.getName() + "]")
+      // .compareTo((list.get(i).values().toString())) == 0) {
+      model.addAttribute("message", "Login was successful");
+      // }
 
-      else {
-        model.addAttribute("message", "Failed to login");
-      }
+      // else {
+      // model.addAttribute("message", "Failed to login");
+      // }
     }
 
     return "login_result";
