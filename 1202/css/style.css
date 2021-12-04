@@ -44,7 +44,7 @@ p {
 }
 
 .btn {
-  display: inline-block;
+  display: block;
   font-size: 18px;
   color: #fff;
   background: #333;
@@ -141,7 +141,7 @@ p {
 @media screen and (max-width: 500px) {
   #navbar ul li {
     float: none;
-    display: list-item;
+    display: block;
   }
 }
 
@@ -229,7 +229,7 @@ p {
 @media screen and (max-width: 500px) {
   .box {
     float: none;
-    display: list-item;
+    display: block;
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
