@@ -36,9 +36,10 @@ filter.addEventListener("keyup", function (e) {
   let searchChar = e.target.value.toLowerCase();
   let users = result.getElementsByTagName("li");
 
+  ///Search by country
   Array.from(users).forEach((user) => {
-    let parText = user.children[1].textContent;
-    if (parText.toLowerCase().indexOf(searchChar) !== -1) {
+    let parCountry = user.children[2].textContent;
+    if (parCountry.toLowerCase().indexOf(searchChar) !== -1) {
       user.classList.remove("hide");
     } else user.classList.add("hide");
   });
