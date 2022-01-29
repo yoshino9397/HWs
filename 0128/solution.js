@@ -7,7 +7,19 @@ async function getData() {
   const { results } = await response.json();
 
   //clear result
-  result.innerHTML = "";
+  result.innerHTML = ``;
+
+  const ul = document.createElement("ul");
+  container.className = "user-list";
+  results.map(() => {
+    const li = document.createElement("li");
+    const img = document.createElement("img");
+    const user = document.createElement("div");
+    const name = document.createElement("h4");
+    const location = document.createElement("p");
+
+    img.setAttribute("src", results.picture.thumbnail);
+  });
 }
 
 getData();
