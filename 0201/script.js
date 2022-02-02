@@ -55,6 +55,18 @@ async function fetchPosts() {
       postElClone.querySelector("h2").textContent = post.title;
       postElClone.querySelector("p").textContent = post.body;
       postElClone.querySelector("li").id = post.id;
+
+      const deleteLi = postElClone.querySelector("li");
+      postElClone
+        .querySelector("button")
+        .addEventListener("click", async () => {
+          const response = await sendHTTPRequest(
+            "DELETE",
+            `https://jsonplaceholder.typicode.com/posts/${post.id}`
+          );
+          console.log(`Deleted! id:${post.id}`);
+          deleteLi.style.display = "none";
+        });
       listElement.appendChild(postElClone);
     }
   } catch (error) {
