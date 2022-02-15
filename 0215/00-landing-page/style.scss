@@ -80,11 +80,29 @@
       width: 80%;
       margin-top: 3%;
     }
-    button{
-      margin-top:3%
+    button {
+      margin-top: 3%;
     }
   }
   img {
     margin: 5% 10% 7% 0;
+  }
+}
+
+.faq {
+  .first-h2 {
+    text-align: center;
+    margin: 3% 0;
+  }
+  .accordion {
+    margin-bottom: 8%;
+  }
+}
+
+.instructor {
+  .row {
+    img {
+      border-radius: 30px;
+    }
   }
 }
