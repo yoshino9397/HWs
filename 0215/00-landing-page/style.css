@@ -119,10 +119,79 @@
 }
 
 .faq .accordion {
-  margin-bottom: 8%;
+  margin-bottom: 5%;
+}
+
+.instructor {
+  padding-top: 3%;
+}
+
+.instructor h2,
+.instructor p {
+  text-align: center;
+}
+
+.instructor .row .col-6 {
+  margin: 3% 1%;
+  width: 20%;
 }
 
 .instructor .row img {
-  border-radius: 30px;
+  border-radius: 50%;
+  margin: 8% 25% 3%;
+}
+
+.instructor .row .icons {
+  margin-left: 20%;
+}
+
+.instructor .row .icons .bi {
+  margin-left: 5%;
+}
+
+.instructor .row h4,
+.instructor .row p {
+  text-align: center;
+}
+
+.instructor .row .tsuna {
+  margin-left: 7%;
+}
+
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5% 0;
+}
+
+.contact .info {
+  margin-left: 7%;
+  width: 45%;
+}
+
+.contact .info h2 {
+  text-align: center;
+}
+
+.contact .info p {
+  margin: 0% 0 -2% 10%;
+}
+
+.contact .info p span {
+  font-weight: 800;
+}
+
+.contact .info hr {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.contact #map {
+  position: absolute;
+  width: 30%;
+  height: 20%;
+  left: 50%;
+  margin: 0 0 0 2%;
 }
 /*# sourceMappingURL=style.css.map */

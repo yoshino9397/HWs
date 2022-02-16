@@ -95,14 +95,67 @@
     margin: 3% 0;
   }
   .accordion {
-    margin-bottom: 8%;
+    margin-bottom: 5%;
   }
 }
 
 .instructor {
+  padding-top: 3%;
+  h2,
+  p {
+    text-align: center;
+  }
   .row {
-    img {
-      border-radius: 30px;
+    .col-6 {
+      margin: 3% 1%;
+      width: 20%;
     }
+    img {
+      border-radius: 50%;
+      margin: 8% 25% 3%;
+    }
+    .icons {
+      margin-left: 20%;
+      .bi {
+        margin-left: 5%;
+      }
+    }
+
+    h4,
+    p {
+      text-align: center;
+    }
+    .tsuna {
+      margin-left: 7%;
+    }
+  }
+}
+
+.contact {
+  display: flex;
+  margin: 5% 0;
+  .info{
+    margin-left: 7%;
+    width: 45%;
+    h2{
+      text-align: center;
+    }
+    p{
+      margin: 0% 0 -2% 10%;
+      span{
+        font-weight: 800;
+      }
+    }
+    hr{
+      width: 80%;
+      margin-left: 10%;
+    }
+  }
+  #map {
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    left: 50%;
+    margin: 0 0 0 2%;
   }
 }
