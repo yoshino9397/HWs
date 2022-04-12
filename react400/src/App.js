@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 
 import CustomLink from "./components/CustomLink";
 import Chats from "./pages/Chats";
@@ -22,10 +22,17 @@ const App = () => {
 
   const routes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "/login", element: user ? <NotFound /> : <Login /> },
+    {
+      path: "/login",
+      element: user ? <NotFound /> : <Login afterLogin={() => setUser(true)} />,
+    },
     {
       path: "/register",
-      element: user ? <NotFound /> : <Register />,
+      element: user ? (
+        <NotFound />
+      ) : (
+        <Register afterRegister={() => setUser(true)} />
+      ),
     },
     {
       path: "/dashboard",
@@ -48,12 +55,8 @@ const App = () => {
           <li>
             <CustomLink to="/">Home</CustomLink>
           </li>
-          <li>
-            <CustomLink to="/login">Login</CustomLink>
-          </li>
-          <li>
-            <CustomLink to="/register">Register</CustomLink>
-          </li>
+          <li>{!user && <CustomLink to="/login">Login</CustomLink>}</li>
+          <li>{!user && <CustomLink to="/register">Register</CustomLink>}</li>
           <li>{user && <CustomLink to="/dashboard">Dashboard</CustomLink>}</li>
         </ul>
         {/* <Routes>
