@@ -4,26 +4,26 @@ import Snack from "../components/Snack";
 import { snackUpdate } from "../redux/actions/action";
 
 const SnackDept = () => {
-  const [snack, setSnack] = useState();
-  const snackData = useSelector((state) => state.snack.snackData.slice(0, 2));
+  const snackData = useSelector((state) => state.snack.snackData);
   const dispatch = useDispatch();
 
   console.log("SNACK RENDER");
 
+  const [clickedSnack, setClickedSnack] = useState();
+
   const handleQuantity = (operator, id) => {
     dispatch(snackUpdate(operator, id));
-    setSnack(id);
+    setClickedSnack(id);
   };
 
   const getRandomColor = (id) => {
     let color = "#";
     let letter = "0123456789ABCDEF";
-    if (snack === id) {
+    if (clickedSnack === id) {
       for (let i = 0; i < 6; i++) {
         color += letter[Math.floor(Math.random() * 16)];
       }
     }
-
     return color;
   };
 

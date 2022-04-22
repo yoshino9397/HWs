@@ -1,9 +1,12 @@
 import React from "react";
 
-const Drink = ({ drink, handleQuantity }) => {
+const Drink = ({ drink, handleQuantity, getRandomColor }) => {
   return (
     <div className="card">
-      <div className="card-body fw-bold">
+      <div
+        className="card-body fw-bold"
+        style={{ backgroundColor: getRandomColor(drink.id) }}
+      >
         {drink.beverage} : {drink.quantity}
       </div>
       <div className="card-footer">
