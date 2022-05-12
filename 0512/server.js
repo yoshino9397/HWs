@@ -7,12 +7,11 @@ const routes = require("./routes/members");
 /* ---------------------------- setups and config --------------------------- */
 const app = express();
 app.use(routes);
-app.set("view engine", "ejs");
-app.set("views", "routes");
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+app.set("view engine", "ejs");
+app.set("views", "routes");
 /* ------------------------------- middleware ------------------------------- */
 app.use("/api/members", require("./routes/members"));
 
