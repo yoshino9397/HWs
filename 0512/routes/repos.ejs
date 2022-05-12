@@ -1,0 +1,16 @@
+<% if(membersInfo.length === 0){ %>
+<h1>User has no members</h1>
+<% } else { %>
+<div style="text-align: center">
+  <ul>
+    <% membersInfo.forEach(function(member) { %>
+    <li style="list-style: none; margin-top: 30px">
+      <p>ID: <%=member.id%></p>
+      <h3><%=member.name%></h3>
+      <p>EMAIL: <%=member.email%></p>
+    </li>
+    <hr style="width: 40vw" />
+    <% })%>
+  </ul>
+</div>
+<% } %>
