@@ -17,7 +17,7 @@ router.post("/read-note", (req, res, next) => {
             <title>Read Page</title>
         </head>
         <body>
-        <h2>${noteList}</h2>
+        <h2>You added ${noteList}</h2>
         <a href="http://localhost:8000/">Home</a>
         </body>
     </html>
