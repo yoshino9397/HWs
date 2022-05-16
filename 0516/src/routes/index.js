@@ -26,21 +26,20 @@ router.post("/create", async (req, res) => {
   res.redirect("/");
 });
 
-router.get("/edit/:id", (req, res) => {
-  const sql = "SELECT * FROM Todos WHERE ID = ?";
+router.get("/edit/:id", async (req, res) => {
   const editId = req.params.id;
-  db.get(sql, editId, (err, row) => {
-    if (err) return console.error(err.message);
-    res.render("edit", { model: row });
-  });
+  const editTitle = await client.hGet("todos", editId);
+  res.render("edit", { model: { Title: editTitle, ID: id } });
 });
 router.post("/edit/:id", async (req, res) => {
-  await client.hSet("todos", uuid.v4(), req.body.Title);
+  const editId = req.params.id;
+  await client.hSet("todos", editId, req.body.Title);
   res.redirect("/");
 });
 
 router.get("/delete:id", async (req, res) => {
-  client.del("todos");
+  const deleteId = req.params.id;
+  client.hDel("todos", deleteId);
   res.redirect("/");
 });
 

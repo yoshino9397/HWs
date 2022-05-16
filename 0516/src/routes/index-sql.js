@@ -33,7 +33,6 @@ router.post("/create", (req, res) => {
   });
 });
 
-
 router.get("/edit/:id", (req, res) => {
   const sql = "SELECT * FROM Todos WHERE ID = ?";
   const editId = req.params.id;
@@ -52,11 +51,10 @@ router.post("/edit/:id", (req, res) => {
   });
 });
 
-
 router.delete("/delete/:id", (req, res) => {
-  const id = req.params.id;
+  const deleteId = req.params.id;
   const sql = "DELETE FROM Todos WHERE ID = ?";
-  db.run(sql, id, (err) => {
+  db.run(sql, deleteId, (err) => {
     if (err) return console.error(err.message);
     res.redirect("/");
   });
