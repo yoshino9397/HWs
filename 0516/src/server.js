@@ -15,4 +15,4 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/', require('./routes'))
 
-app.listen(process.env.PORT || 8000, () => console.log('Server has started...'))
+app.listen(process.env.PORT || 6379, () => console.log('Server has started...'))
