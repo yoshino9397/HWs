@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/user");
+const { InitiateMongoServer } = require("../loaders/mongodb");
 
 router.get("/", (req, res) => {
   res.status(200).json({ msg: "/ Route checker" });
@@ -16,11 +17,16 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res) => {
   req.session.email = req.body.email;
-  res.end("logged in");
+  const db = InitiateMongoServer();
+  db.collection("users")
+    .findOne({ email: req.session.email })
+    .then(() => {
+      res.end("logged in");
+    });
 });
 
 router.get("/register", (req, res) => {
-  let sess = req.session
+  let sess = req.session;
   if (sess.email) {
     return res.redirect("/api/admin");
   }
@@ -28,15 +34,16 @@ router.get("/register", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    const user = new User(email, password)
-    user.save()
-    .then(result => {
-        console.log(result);
-        res.end('Registered')
+  const user = new User(email, password);
+  user
+    .save()
+    .then((result) => {
+      console.log(result);
+      res.end("Registered");
     })
-    .catch(err => console.error(err))
+    .catch((err) => console.error(err));
 });
 
 router.get("/admin", (req, res) => {
@@ -47,11 +54,6 @@ router.get("/admin", (req, res) => {
   } else {
     res.end("Login first");
   }
-});
-
-router.post("/login", (req, res) => {
-  req.session.email = req.body.email;
-  res.end("logged in");
 });
 
 router.get("/admin", (req, res) => {
